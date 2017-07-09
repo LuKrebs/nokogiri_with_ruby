@@ -28,8 +28,9 @@ japan_title.each_with_index do |place, index|
 
   japan_place[:extra_info] = "#{new_link_heading[0].text} #{new_link_side_bar[0].text}"
 
+  csv_options = { col_sep: ',', force_quotes: true, quote_char: '"' }
   filepath = "japan_places.csv"
-  CSV.open(filepath, "w") do |csv|
+  CSV.open(filepath, 'a', csv_options) do |csv|
     csv << [japan_place[:title], japan_place[:category], japan_place[:text], japan_place[:extra_info], japan_place[:url]]
   end
   puts "Successfully wrote #{japan_place[:title]}"
